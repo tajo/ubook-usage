@@ -29,7 +29,6 @@ services:
 
   # running the snapshot tests in ci
   ubook-test:
-    command: 'yarn ubook-snapshot --host="http://ubook-server"'
     build: .
     ipc: host
     security_opt:
