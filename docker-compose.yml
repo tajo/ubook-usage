@@ -30,6 +30,7 @@ services:
   # running the snapshot tests in ci
   ubook-test:
     build: .
+    ipc: host
     security_opt:
       - seccomp:chrome.json
     links:
