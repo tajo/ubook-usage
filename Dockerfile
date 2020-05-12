@@ -61,8 +61,4 @@ RUN yarn install
 COPY --chown=pwuser:pwuser . .
 RUN yarn ubook:build
 
-RUN mkdir -p /home/pwuser/ubook/artifacts \
-  && chown -R pwuser:pwuser /home/pwuser \
-  && chmod -R 777 /home/pwuser/ubook/artifacts
-
 USER pwuser
