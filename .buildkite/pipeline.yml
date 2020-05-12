@@ -11,7 +11,7 @@ steps:
       queue: builders
   - wait
   - name: ":docker: :package: snapshot"
-    command: su && chown 999:999 artifacts
+    command: sudo chown 999:999 artifacts
     agents:
       queue: builders
   - wait
