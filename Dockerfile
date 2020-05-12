@@ -59,7 +59,7 @@ RUN yarn install
 
 # Copy the current files to the docker image.
 COPY --chown=pwuser:pwuser . .
-RUN yarn ubook:build
+#RUN yarn ubook:build
 
 RUN mkdir -p /home/pwuser/ubook/artifacts \
   && chown -R pwuser:pwuser /home/pwuser \

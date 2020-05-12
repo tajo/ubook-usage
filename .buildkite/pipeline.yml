@@ -9,10 +9,13 @@ steps:
         image-repository: 027047743804.dkr.ecr.us-east-2.amazonaws.com/uber
     agents:
       queue: builders
+  - name: ":docker: :package: snapshot"
+    command: chown 999:999 artifacts
+    agents:
+      queue: builders
+  - wait
   # Wait until all images are built.
   # This way we can download the built image from a registry instead of building each for each test task.
-  - command: chown 999:999 artifacts
-  - wait
   # All of the commands after the wait are run in parallel.
   - name: snapshot
     command: yarn ubook:snapshot:ci
