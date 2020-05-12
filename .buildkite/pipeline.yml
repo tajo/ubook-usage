@@ -9,8 +9,9 @@ steps:
         image-repository: 027047743804.dkr.ecr.us-east-2.amazonaws.com/uber
     agents:
       queue: builders
+  - wait
   - name: ":docker: :package: snapshot"
-    command: su chown 999:999 artifacts
+    command: su && chown 999:999 artifacts
     agents:
       queue: builders
   - wait
