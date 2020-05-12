@@ -41,7 +41,6 @@ RUN apt-get install -y ffmpeg
 RUN groupadd -r pwuser && useradd -r -g pwuser -G audio,video pwuser \
   && mkdir -p /home/pwuser/Downloads \
   && mkdir -p /home/pwuser/ubook \
-  && mkdir -p /home/pwuser/ubook/artifacts \
   && chown -R pwuser:pwuser /home/pwuser
 
 # 7. (Optional) Install XVFB if there's a need to run browsers in headful mode
@@ -52,8 +51,6 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && apt update && apt-get install -y yarn
 
 WORKDIR /home/pwuser/ubook
-RUN chmod -R 777 /home/pwuser/ubook/artifacts
-USER pwuser
 
 # Copy manifests and install dependencies.
 # Doing this before a build step can more effectively leverage Docker caching.
@@ -63,8 +60,9 @@ RUN yarn install
 # Copy the current files to the docker image.
 COPY --chown=pwuser:pwuser . .
 RUN yarn ubook:build
-#RUN mkdir -p "/ubook/artifacts" && chown -R pwuser:pwuser "/ubook/artifacts"
 
-# Run everything after as non-privileged user.
+RUN mkdir -p /home/pwuser/ubook/artifacts \
+  && chown -R pwuser:pwuser /home/pwuser \
+  && chmod -R 777 /home/pwuser/ubook/artifacts
 
-
+USER pwuser
