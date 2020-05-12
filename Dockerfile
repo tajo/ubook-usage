@@ -41,6 +41,7 @@ RUN apt-get install -y ffmpeg
 RUN groupadd -r pwuser && useradd -r -g pwuser -G audio,video pwuser \
   && mkdir -p /home/pwuser/Downloads \
   && mkdir -p /home/pwuser/ubook \
+  && mkdir -p /home/pwuser/ubook/artifacts \
   && chown -R pwuser:pwuser /home/pwuser
 
 # 7. (Optional) Install XVFB if there's a need to run browsers in headful mode
