@@ -60,7 +60,6 @@ RUN yarn install
 COPY . .
 RUN yarn ubook:build
 
-RUN mkdir -p artifacts && chown -R node:node artifacts
-
 # Run everything after as non-privileged user.
 USER pwuser
+RUN mkdir -p "/ubook/artifacts" && chown -R pwuser:pwuser "/ubook/artifacts"
