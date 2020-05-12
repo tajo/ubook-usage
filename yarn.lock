@@ -8519,10 +8519,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ubook-alpha@^0.0.17:
+ubook@^0.0.17:
   version "0.0.17"
-  resolved "https://registry.yarnpkg.com/ubook-alpha/-/ubook-alpha-0.0.17.tgz#707c9eb5abe2d6c812be3a3af339bbe76cb88bee"
-  integrity sha512-Fz2JiE3J/rEgX4khIeoP1fLauKCxHrp7z39sLl8EKJw2naBy1dDoRA7L+UTs0T8rBza/Zpi6Mo9gmID5imyZ2w==
+  resolved "https://registry.yarnpkg.com/ubook/-/ubook-0.0.17.tgz#3176ac0b72c557ddcbab06302fe1c45677fb052f"
+  integrity sha512-D4mBIE46eRfP2V5RvDmPFNoFcB62iGk6l2qx7OczFjT6xc6/0/2+SqKO6ejbb6Zqvv4qYdJFHGsAybtyFFJ8FA==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"

@@ -23,7 +23,6 @@ RUN apt-get install -y libwoff1 \
   libvpx5
 
 # 3. Install Chromium dependencies
-
 RUN apt-get install -y libnss3 \
   libxss1 \
   libasound2
@@ -53,4 +52,4 @@ RUN yarn install
 
 # Copy the current files to the docker image.
 COPY . .
-#RUN yarn ubook:build
+RUN yarn ubook:build
