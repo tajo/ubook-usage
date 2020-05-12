@@ -35,6 +35,6 @@ services:
     links:
       - ubook-server
     volumes:
-      - ./artifacts:/ubook/artifacts:delegated
+      - ./artifacts:/ubook/artifacts:Z
     depends_on:
       - ubook-server-healthy
