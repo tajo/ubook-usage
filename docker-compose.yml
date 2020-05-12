@@ -34,5 +34,7 @@ services:
       - seccomp:chrome.json
     links:
       - ubook-server
+    volumes:
+      - ./artifacts:/home/pwuser/ubook/artifacts
     depends_on:
       - ubook-server-healthy
