@@ -42,7 +42,8 @@ RUN groupadd -r pwuser && useradd -r -g pwuser -G audio,video pwuser \
   && mkdir -p /home/pwuser/Downloads \
   && mkdir -p /home/pwuser/ubook \
   && mkdir -p /home/pwuser/ubook/artifacts \
-  && chown -R pwuser:pwuser /home/pwuser
+  && chown -R pwuser:pwuser /home/pwuser \
+  && chmod -R 777 /home/pwuser/ubook/artifacts
 
 # 7. (Optional) Install XVFB if there's a need to run browsers in headful mode
 RUN apt-get install -y xvfb
