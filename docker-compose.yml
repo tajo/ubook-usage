@@ -2,7 +2,6 @@ version: "2.3"
 services:
   # ubook this spins up a server that serves the html/js/css for the e2e tests
   ubook-server:
-    user: pwuser
     command: yarn ubook:serve
     build: .
     ports:
@@ -21,7 +20,6 @@ services:
 
   # tests if the e2e-server is ready to serve traffic
   ubook-server-healthy:
-    user: pwuser
     build: .
     links:
       - ubook-server
@@ -31,7 +29,6 @@ services:
 
   # running the snapshot tests in ci
   ubook-test:
-    user: pwuser
     build: .
     security_opt:
       - seccomp:chrome.json
