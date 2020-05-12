@@ -56,11 +56,11 @@ USER pwuser
 
 # Copy manifests and install dependencies.
 # Doing this before a build step can more effectively leverage Docker caching.
-COPY package.json yarn.lock /home/pwuser/ubook/
+COPY --chown=pwuser:pwuser package.json yarn.lock /home/pwuser/ubook/
 RUN yarn install
 
 # Copy the current files to the docker image.
-COPY . .
+COPY --chown=pwuser:pwuser . .
 RUN yarn ubook:build
 #RUN mkdir -p "/ubook/artifacts" && chown -R pwuser:pwuser "/ubook/artifacts"
 
