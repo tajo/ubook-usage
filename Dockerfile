@@ -37,12 +37,6 @@ RUN apt-get install -y libdbus-glib-1-2 \
 
 RUN apt-get install -y ffmpeg
 
-# 6. Add user so we don't need --no-sandbox in Chromium
-RUN groupadd -r pwuser && useradd -r -g pwuser -G audio,video pwuser \
-  && mkdir -p /home/pwuser/Downloads \
-  && mkdir -p /home/pwuser/ubook \
-  && chown -R pwuser:pwuser /home/pwuser
-
 # 7. (Optional) Install XVFB if there's a need to run browsers in headful mode
 RUN apt-get install -y xvfb
 
@@ -50,19 +44,13 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt update && apt-get install -y yarn
 
-WORKDIR /home/pwuser/ubook
+WORKDIR /ubook
 
 # Copy manifests and install dependencies.
 # Doing this before a build step can more effectively leverage Docker caching.
-COPY --chown=pwuser:pwuser package.json yarn.lock /home/pwuser/ubook/
+COPY package.json yarn.lock /ubook/
 RUN yarn install
 
 # Copy the current files to the docker image.
-COPY --chown=pwuser:pwuser . .
+COPY . .
 #RUN yarn ubook:build
-
-RUN mkdir -p /home/pwuser/ubook/artifacts \
-  && chown -R pwuser:pwuser /home/pwuser \
-  && chmod -R 777 /home/pwuser/ubook/artifacts
-
-USER pwuser

@@ -10,11 +10,6 @@ steps:
     agents:
       queue: builders
   - wait
-  - name: ":docker: :package: snapshot"
-    command: sudo chown 999:999 artifacts
-    agents:
-      queue: builders
-  - wait
   # Wait until all images are built.
   # This way we can download the built image from a registry instead of building each for each test task.
   # All of the commands after the wait are run in parallel.
