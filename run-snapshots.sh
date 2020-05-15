@@ -22,3 +22,6 @@ then
 else
   yarn ubook-snapshot --host="http://ubook-server"
 fi
+if [ $? -eq 1 ]; then exit 1; fi
+echo
+echo "slunicko"

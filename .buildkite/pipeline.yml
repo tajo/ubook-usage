@@ -27,6 +27,7 @@ steps:
     #       - ubook-server-healthy
     agents:
       queue: workers
-  - block: ":incoming_envelope: update-snapshots"
+  - block: ":book: ubook snapshots mismatch"
     prompt: "uBook snapshosts don't match the master branch. Please check the previous step and artifacts. Is it ok to proceed and update master?"
     depends_on: "snapshot"
+    if: build.message !~ /slunicko/
