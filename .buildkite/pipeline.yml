@@ -14,7 +14,7 @@ steps:
   # All of the commands after the wait are run in parallel.
   - name: snapshots
     label: ":storybook: uBook snapshots"
-    command: yarn ubook:snapshot:ci
+    command: ./run-snasphots.sh
     timeout_in_minutes: 30
     soft_fail:
       - exit_status: "*"
@@ -28,11 +28,6 @@ steps:
     #       - ubook-server-healthy
     agents:
       queue: workers
-  - wait
-  - block: ":storybook: uBook snapshots mismatch"
-    prompt: "uBook snapshosts don't match the master branch. Please check the previous step and its artifacts.\n\nIs it ok to proceed and update the master snapshots?"
-  - wait
-  - command: "echo uBook snapshots will be updated"
     # fields:
     #   - select: "Is it ok to proceed and update the master snapshots?"
     #     key: "ubook-proceed"

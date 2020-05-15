@@ -2,6 +2,7 @@
 
 set -e
 
+cat .buildkite/prompt-update.yml | buildkite-agent pipeline upload
 exit 1
 
 echo "Downloading master snapshots from $S3_BUCKET_NAME S3 bucket"
@@ -23,5 +24,4 @@ else
   yarn ubook-snapshot --host="http://ubook-server"
 fi
 if [ $? -eq 1 ]; then exit 1; fi
-echo
-echo "slunicko"
+
