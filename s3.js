@@ -7,17 +7,17 @@ const AWS = require("aws-sdk");
 const makeDir = require("make-dir");
 const justRemove = require("just-remove");
 
-console.log(process.env.CI);
-console.log(process.env.BUILDKITE);
-console.log(process.env.BUILDKITE_BRANCH);
-console.log(process.env.BUILDKITE_PULL_REQUEST);
+// console.log(process.env.CI);
+// console.log(process.env.BUILDKITE);
+// console.log(process.env.BUILDKITE_BRANCH);
+// console.log(process.env.BUILDKITE_PULL_REQUEST);
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
 });
 
-const BUCKET_NAME = process.env.AWS_BUCKET_NAME || "ubook-snapshots";
+const BUCKET_NAME = process.env.S3_BUCKET_NAME || "ubook-snapshots";
 
 const uploadFile = async (fileName, dirPath, serviceName) => {
   try {
@@ -77,6 +77,7 @@ const uploadDir = async (directory, serviceName) => {
       files.map((file) => uploadFile(file, directory, serviceName))
     );
   } catch (e) {
+    console.log(e);
     console.error(`Cannot read directory ${directory}`);
   }
 };
@@ -117,6 +118,7 @@ const downloadDir = async (directory, serviceName) => {
     const keys = list.Contents.map((item) => item.Key);
     await Promise.all(keys.map((key) => downloadFile(key, directory)));
   } catch (e) {
+    console.log(e);
     console.error(
       `Reading ${serviceName} folder from the s3 bucket ${BUCKET_NAME} failed.`
     );
