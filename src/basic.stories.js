@@ -22,3 +22,12 @@ export const Secondary = () => (
     </Button>
   </HeadingLevel>
 );
+
+export const Another = () => (
+  <HeadingLevel>
+    <Heading styleLevel={3}>Antoher</Heading>
+    <Button kind={KIND.secondary} onClick={() => alert("click")}>
+      Button
+    </Button>
+  </HeadingLevel>
+);
