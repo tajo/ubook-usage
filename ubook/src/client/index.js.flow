@@ -1,0 +1,165 @@
+// @flow
+
+type NodeModule = typeof module;
+
+declare type Context = {
+  kind: string,
+  story: string,
+  ...
+};
+declare type Renderable =
+  | string
+  | number
+  | React$Element<any>
+  | Iterable<?Renderable>;
+declare type RenderFunction = () => Renderable;
+
+declare type StoryDecorator = (
+  story: RenderFunction,
+  context: Context
+) => Renderable;
+
+declare type DecoratorParameters = { [key: string]: any, ... };
+
+declare interface StoryObject {
+  name: string;
+  render: RenderFunction;
+}
+
+declare interface StoryBucket {
+  kind: string;
+  filename: string;
+  stories: Array<StoryObject>;
+}
+
+// @storybook/react
+// https://github.com/flow-typed/flow-typed/blob/master/definitions/npm/%40storybook/react_v5.x.x/flow_v0.104.x-/react_v5.x.x.js
+declare export function addDecorator(decorator: StoryDecorator): void;
+declare export function addParameters(parameters: DecoratorParameters): void;
+declare export function clearDecorators(): void;
+declare export function configure(fn: () => void, module: NodeModule): void;
+declare export function setAddon(addon: Object): void;
+declare export function forceReRender(): void;
+declare export function getStorybook(): Array<StoryBucket>;
+
+declare interface ActionOptions {
+  depth?: number;
+  clearOnStoryChange?: boolean;
+  limit?: number;
+  allowFunction?: boolean;
+}
+declare type DecoratorFunction = (...args: any[]) => any[];
+declare type HandlerFunction = (...args: any[]) => void;
+declare type ActionsMap = { [string]: HandlerFunction };
+
+// @storybook/addon-actions
+declare export function action(
+  name: string,
+  opts: ActionOptions
+): HandlerFunction;
+declare export function actions(...args: any[]): ActionsMap;
+declare export function withActions(...args: any[]): any;
+declare export function configureActions(opts: ActionOptions): void;
+declare export function decorate(
+  decorators: DecoratorFunction[]
+): {
+  action: typeof action,
+  actions: typeof actions,
+  withActions: typeof withActions,
+};
+
+// @storybook/addon-knobs
+declare export function withKnobs(...args: any[]): any;
+declare export function text(
+  name: string,
+  value: string,
+  groupId?: string
+): string;
+declare export function boolean(
+  name: string,
+  value: boolean,
+  groupId?: string
+): boolean;
+declare export function number(
+  name: string,
+  value: number,
+  options?: {
+    range?: boolean,
+    min?: number,
+    max?: number,
+    step?: number,
+  },
+  groupId?: string
+): number;
+declare export function color(
+  name: string,
+  value: string,
+  groupId?: string
+): string;
+declare export function object<T>(name: string, value: T, groupId?: string): T;
+type PropertyKey = string | number | symbol;
+type SelectTypeKnobValue = string | number | null | void | PropertyKey[];
+declare export function select<T: SelectTypeKnobValue>(
+  name: string,
+  options: any,
+  value: T,
+  groupId?: string
+): T;
+type RadiosTypeKnobValue = string | number | null | void;
+declare export function radios<T: RadiosTypeKnobValue>(
+  name: string,
+  options: { [string | number]: T },
+  value: T,
+  groupId?: string
+): T;
+export type OptionsTypeKnobSingleValue =
+  | string
+  | number
+  | null
+  | void
+  | string[]
+  | number[]
+  | (string | number)[];
+declare export function optionsKnob<T: OptionsTypeKnobSingleValue>(
+  name: string,
+  valuesObj: { [string]: T },
+  value: any,
+  optionsObj: {
+    display:
+      | "radio"
+      | "inline-radio"
+      | "check"
+      | "inline-check"
+      | "select"
+      | "multi-select",
+  },
+  groupId?: string
+): T;
+declare export function files(
+  name: string,
+  accept: string,
+  value?: string[],
+  groupId?: string
+): string[];
+declare export function date(
+  name: string,
+  value?: Date,
+  groupId?: string
+): Date;
+declare export function button(
+  name: string,
+  callback: (any) => any,
+  groupId?: string
+): any;
+
+// @storybook/addon-links
+declare export function LinkTo(): null;
+declare export function linkTo(
+  idOrKindInput: string,
+  storyInput?: string | ((...args: any[]) => string)
+): (...args: any[]) => void;
+declare export function hrefTo(kind: string, name: string): Promise<string>;
+declare export function withLinks(storyFn: () => void): void;
+
+// @storybook/addon-a11y
+declare export function withA11y(...args: any): any;
