@@ -16,7 +16,7 @@ steps:
     command: yarn ubook:snapshot:ci
     timeout_in_minutes: 30
     soft_fail:
-      - exit_status: 1
+      - exit_status: *
     artifact_paths:
       - "artifacts/**/*.png"
     # plugins:
