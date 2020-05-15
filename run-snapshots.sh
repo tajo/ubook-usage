@@ -1,9 +1,14 @@
 #!/bin/bash
 
-set -e
+set -u
 
-#cat .buildkite/prompt-update.yml | buildkite-agent pipeline upload
-exit 0
+
+exit_script () {
+  cat .buildkite/prompt-update.yml | buildkite-agent pipeline upload
+  exit 1
+}
+
+exit_script
 
 echo "Downloading master snapshots from $S3_BUCKET_NAME S3 bucket"
 echo
