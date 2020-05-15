@@ -17,7 +17,7 @@ const s3 = new AWS.S3({
   secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
 });
 
-const BUCKET_NAME = process.env.S3_BUCKET_NAME || "ubook-snapshots";
+const BUCKET_NAME = process.env.S3_BUCKET_NAME;
 
 const uploadFile = async (fileName, dirPath, serviceName) => {
   try {
