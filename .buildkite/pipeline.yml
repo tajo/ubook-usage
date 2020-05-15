@@ -14,7 +14,7 @@ steps:
   # All of the commands after the wait are run in parallel.
   - name: snapshots
     label: ":storybook: uBook snapshots"
-    command: run-snasphots.sh
+    command: ./run-snapshots.sh
     timeout_in_minutes: 30
     soft_fail:
       - exit_status: "*"
