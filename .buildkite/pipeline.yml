@@ -12,7 +12,7 @@ steps:
   # Wait until all images are built.
   # This way we can download the built image from a registry instead of building each for each test task.
   # All of the commands after the wait are run in parallel.
-  - name: snapshot
+  - name: ":storybook: uBook snapshots"
     command: yarn ubook:snapshot:ci
     timeout_in_minutes: 30
     soft_fail:
@@ -27,7 +27,15 @@ steps:
     #       - ubook-server-healthy
     agents:
       queue: workers
-  - block: ":book: ubook snapshots mismatch"
-    prompt: "uBook snapshosts don't match the master branch. Please check the previous step and artifacts. Is it ok to proceed and update master?"
-    depends_on: "snapshot"
-    if: build.message == "ahahah"
+  - block: ":storybook: uBook snapshots mismatch"
+    prompt: "uBook snapshosts don't match the master branch. Please check the previous step and its artifacts."
+    depends_on: ":storybook: uBook snapshots"
+    fields:
+      - select: "Is it ok to proceed and update master??"
+        key: "favourite-thing"
+        options:
+          - label: ":negative_squared_cross_mark: NO"
+            value: "no"
+          - label: ":white_check_mark: YES"
+            value: "yes"
+    #if: build.message == "ahahah"
