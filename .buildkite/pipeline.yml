@@ -1,17 +1,4 @@
 steps:
-  - name: ":docker: :package: snapshot"
-    plugins:
-      "docker-compose#v3.0.3":
-        build:
-          - ubook-test
-          - ubook-server
-          - ubook-server-healthy
-    agents:
-      queue: builders
-  - wait
-  # Wait until all images are built.
-  # This way we can download the built image from a registry instead of building each for each test task.
-  # All of the commands after the wait are run in parallel.
   - name: ":storybook: ubook-snapshots"
     command: ./run-snapshots.sh
     timeout_in_minutes: 30
@@ -22,8 +9,11 @@ steps:
     plugins:
       "docker-compose#v3.0.3":
         run: ubook-test
-        pull:
-          - ubook-server
-          - ubook-server-healthy
+        volumes:
+          - ${BUILDKITE_AGENT_BINARY_PATH:-/usr/bin/buildkite-agent}:/usr/bin/buildkite-agent
+        environment:
+          - BUILDKITE_JOB_ID
+          - BUILDKITE_BUILD_ID
+          - BUILDKITE_AGENT_ACCESS_TOKEN
     agents:
       queue: workers
