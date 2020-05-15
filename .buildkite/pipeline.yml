@@ -6,7 +6,6 @@ steps:
           - ubook-test
           - ubook-server
           - ubook-server-healthy
-        image-repository: 027047743804.dkr.ecr.us-west-1.amazonaws.com/ubook
     agents:
       queue: builders
   - wait
