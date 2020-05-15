@@ -11,6 +11,6 @@ export const accessible = () => <button>Accessibleeee button</button>;
 
 export const inaccessible = () => (
   <button style={{ backgroundColor: "red", color: "darkRed" }}>
-    Inaccessible buttonnnnn
+    Inaccessible button
   </button>
 );
