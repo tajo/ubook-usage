@@ -9,16 +9,12 @@
     "ubook:snapshot:dev": "docker-compose run ubook-test bash -c 'yarn ubook-snapshot --host=\"http://ubook-server\"'"
   },
   "dependencies": {
-    "aws-sdk": "^2.676.0",
     "baseui": "^9.70.0",
-    "commander": "^5.1.0",
-    "just-remove": "^2.1.0",
-    "make-dir": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "static-server": "^2.2.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7",
-    "ubook": "^0.0.17"
+    "ubook": "https://github.com/uber/ubook#0ca6221386f6a73130f6bb9c5b7291946ae284ad"
   }
 }

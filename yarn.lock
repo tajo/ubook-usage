@@ -2224,10 +2224,10 @@ autoprefixer@^9.7.2:
     postcss "^7.0.27"
     postcss-value-parser "^4.0.3"
 
-aws-sdk@^2.676.0:
-  version "2.676.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.676.0.tgz#add497d57438f450a95efe570a4fd55654d7c16e"
-  integrity sha512-+ftolB59dL+7M6hRihhlKSDKNPfm0AJe48gtkwVJYljYubz1Y7vAwveRgBc18L9aoRXH2obFC5Ivf3r0dcfF2A==
+aws-sdk@^2.677.0:
+  version "2.677.0"
+  resolved "https://unpm.uberinternal.com/aws-sdk/-/aws-sdk-2.677.0.tgz#6106fa93e98e6357304f734a6d6b579303c6a474"
+  integrity sha1-YQb6k+mOY1cwT3NKbWtXkwPGpHQ=
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -3198,7 +3198,7 @@ commander@^4.0.1, commander@^4.1.1:
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
-commander@^5.0.0, commander@^5.1.0:
+commander@^5.0.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
@@ -8558,10 +8558,9 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ubook@^0.0.17:
-  version "0.0.17"
-  resolved "https://registry.yarnpkg.com/ubook/-/ubook-0.0.17.tgz#3176ac0b72c557ddcbab06302fe1c45677fb052f"
-  integrity sha512-D4mBIE46eRfP2V5RvDmPFNoFcB62iGk6l2qx7OczFjT6xc6/0/2+SqKO6ejbb6Zqvv4qYdJFHGsAybtyFFJ8FA==
+"ubook@https://github.com/uber/ubook#0ca6221386f6a73130f6bb9c5b7291946ae284ad":
+  version "0.0.18"
+  resolved "https://github.com/uber/ubook#0ca6221386f6a73130f6bb9c5b7291946ae284ad"
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -8580,6 +8579,7 @@ ubook@^0.0.17:
     "@storybook/addon-links" "^5.3.18"
     "@storybook/addons" "^5.3.17"
     "@storybook/react" "^5.3.18"
+    aws-sdk "^2.677.0"
     babel-loader "^8.1.0"
     babel-plugin-transform-cup-globals "^1.0.2"
     chalk "^4.0.0"

@@ -10,7 +10,7 @@ export default {
 export const Primary = () => (
   <HeadingLevel>
     <Heading styleLevel={3}>Primary</Heading>
-    <Button onClick={action("button-click")}>Button</Button>
+    <Button onClick={action("button-click")}>Buttonb</Button>
   </HeadingLevel>
 );
 
