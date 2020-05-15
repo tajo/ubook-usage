@@ -30,4 +30,4 @@ steps:
   - block: ":book: ubook snapshots mismatch"
     prompt: "uBook snapshosts don't match the master branch. Please check the previous step and artifacts. Is it ok to proceed and update master?"
     depends_on: "snapshot"
-    if: build.message === "ahahah"
+    if: build.message == "ahahah"
