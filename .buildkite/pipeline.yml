@@ -28,15 +28,16 @@ steps:
     #       - ubook-server-healthy
     agents:
       queue: workers
+  - wait
   - block: ":storybook: uBook snapshots mismatch"
     prompt: "uBook snapshosts don't match the master branch. Please check the previous step and its artifacts."
-    depends_on: snapshots
-    fields:
-      - select: "Is it ok to proceed and update master??"
-        key: "favourite-thing"
-        options:
-          - label: ":negative_squared_cross_mark: NO"
-            value: "no"
-          - label: ":white_check_mark: YES"
-            value: "yes"
+  - wait
+    # fields:
+    #   - select: "Is it ok to proceed and update the master snapshots?"
+    #     key: "ubook-proceed"
+    #     options:
+    #       - label: ":negative_squared_cross_mark: NO"
+    #         value: "no"
+    #       - label: ":white_check_mark: YES"
+    #         value: "yes"
     #if: build.message == "ahahah"
