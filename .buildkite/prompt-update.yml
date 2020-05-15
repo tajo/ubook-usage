@@ -3,3 +3,5 @@ steps:
     prompt: "uBook snapshosts don't match the master branch. Please check the previous step and its artifacts.\n\nIs it ok to proceed and update the master snapshots?"
   - wait
   - command: "echo uBook snapshots will be updated"
+    agents:
+    queue: workers
