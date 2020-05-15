@@ -7,7 +7,7 @@
     "ubook:build": "yarn ubook -o dist",
     "ubook:serve": "static-server dist --port 51372",
     "ubook:snapshot:dev": "docker-compose run ubook-test bash -c 'yarn ubook-snapshot --host=\"http://ubook-server\"'",
-    "ubook:snapshot:ci": "./files.js download artifacts && yarn ubook-snapshot --host=\"http://ubook-server\" && ./files.js upload artifacts"
+    "ubook:snapshot:ci": "yarn ubook-snapshot --host=\"http://ubook-server\""
   },
   "dependencies": {
     "aws-sdk": "^2.676.0",
