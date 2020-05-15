@@ -4,4 +4,4 @@ steps:
   - wait
   - command: "echo uBook snapshots will be updated"
     agents:
-    queue: workers
+      queue: workers
