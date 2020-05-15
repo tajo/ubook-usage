@@ -1,39 +1,29 @@
 steps:
-  # - name: ":docker: :package: snapshot"
-  #   plugins:
-  #     "docker-compose#v3.0.3":
-  #       build:
-  #         - ubook-test
-  #         - ubook-server
-  #         - ubook-server-healthy
-  #   agents:
-  #     queue: builders
-  # - wait
+  - name: ":docker: :package: snapshot"
+    plugins:
+      "docker-compose#v3.0.3":
+        build:
+          - ubook-test
+          - ubook-server
+          - ubook-server-healthy
+    agents:
+      queue: builders
+  - wait
   # Wait until all images are built.
   # This way we can download the built image from a registry instead of building each for each test task.
   # All of the commands after the wait are run in parallel.
-  - name: snapshots
-    label: ":storybook: uBook snapshots"
+  - name: ":storybook: ubook-snapshots"
     command: ./run-snapshots.sh
     timeout_in_minutes: 30
     soft_fail:
-      - exit_status: "*"
+      - exit_status: 1
     artifact_paths:
       - "artifacts/**/*.png"
-    # plugins:
-    #   "docker-compose#v3.0.3":
-    #     run: ubook-test
-    #     pull:
-    #       - ubook-server
-    #       - ubook-server-healthy
+    plugins:
+      "docker-compose#v3.0.3":
+        run: ubook-test
+        pull:
+          - ubook-server
+          - ubook-server-healthy
     agents:
       queue: workers
-    # fields:
-    #   - select: "Is it ok to proceed and update the master snapshots?"
-    #     key: "ubook-proceed"
-    #     options:
-    #       - label: ":negative_squared_cross_mark: NO"
-    #         value: "no"
-    #       - label: ":white_check_mark: YES"
-    #         value: "yes"
-    #if: build.message == "ahahah"
