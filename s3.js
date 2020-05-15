@@ -17,11 +17,13 @@ const s3 = new AWS.S3({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
+const BUCKET_NAME = process.env.AWS_BUCKET_NAME || "ubook-snapshots";
+
 const uploadFile = async (fileName, dirPath, serviceName) => {
   try {
     const result = await s3
       .upload({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Key: `${serviceName}/${fileName}`,
         Body: await fs.promises.readFile(path.join(dirPath, fileName)),
       })
@@ -36,7 +38,7 @@ const deleteFile = async (key) => {
   try {
     const result = await s3
       .deleteObject({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Key: key,
       })
       .promise();
@@ -58,7 +60,7 @@ const uploadDir = async (directory, serviceName) => {
     //first, purge bucket files that don't have local counterparts
     const list = await s3
       .listObjects({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Delimiter: "/",
         Prefix: `${serviceName}/`,
       })
@@ -83,7 +85,7 @@ const downloadFile = async (key, outputDir) => {
   try {
     const result = await s3
       .getObject({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Key: key,
       })
       .promise();
@@ -106,7 +108,7 @@ const downloadDir = async (directory, serviceName) => {
   try {
     const list = await s3
       .listObjects({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Delimiter: "/",
         Prefix: `${serviceName}/`,
       })
@@ -116,7 +118,7 @@ const downloadDir = async (directory, serviceName) => {
     await Promise.all(keys.map((key) => downloadFile(key, directory)));
   } catch (e) {
     console.error(
-      `Reading ${serviceName} folder from the s3 bucket ${process.env.AWS_BUCKET_NAME} failed.`
+      `Reading ${serviceName} folder from the s3 bucket ${BUCKET_NAME} failed.`
     );
   }
 };
@@ -125,7 +127,7 @@ const deleteDir = async (directory, serviceName) => {
   try {
     const list = await s3
       .listObjects({
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: BUCKET_NAME,
         Delimiter: "/",
         Prefix: `${serviceName}/`,
       })
@@ -135,7 +137,7 @@ const deleteDir = async (directory, serviceName) => {
     await Promise.all(keys.map((key) => downloadFile(key, directory)));
   } catch (e) {
     console.error(
-      `Reading ${serviceName} folder from the s3 bucket ${process.env.AWS_BUCKET_NAME} failed.`
+      `Reading ${serviceName} folder from the s3 bucket ${BUCKET_NAME} failed.`
     );
   }
 };
