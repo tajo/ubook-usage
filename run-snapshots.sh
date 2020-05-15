@@ -2,6 +2,8 @@
 
 set -e
 
+exit 1
+
 echo "Downloading master snapshots from $S3_BUCKET_NAME S3 bucket"
 echo
 ./files.js download artifacts
