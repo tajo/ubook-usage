@@ -1,6 +1,6 @@
 steps:
   - block: ":incoming_envelope: update-snapshots"
-      prompt: "uBook snapshosts don't match the master branch. Is it ok to proceed and update master?"
+    prompt: "uBook snapshosts don't match the master branch. Is it ok to proceed and update master?"
   - name: ":docker: :package: snapshot"
     plugins:
       "docker-compose#v3.0.3":
@@ -26,4 +26,3 @@ steps:
           - ubook-server-healthy
     agents:
       queue: workers
-  
