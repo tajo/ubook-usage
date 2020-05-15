@@ -7,8 +7,6 @@ exit_script () {
   exit 1
 }
 
-exit_script
-
 echo "Downloading master snapshots from $S3_BUCKET_NAME S3 bucket"
 echo
 ./files.js download artifacts
