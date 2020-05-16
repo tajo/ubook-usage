@@ -6650,10 +6650,10 @@ pkg-up@2.0.0, pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-playwright-core@=0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-0.15.0.tgz#c605c98a13c81d5a2e2691f15d04758cf302c20a"
-  integrity sha512-uTm4PoF2U3iXkLMMG9vlTxlGfO8atQGAHDxqi8xV7hEjNSYeLTU7c6HN5zwadeHRVuBbNsZ4yqu9u4hoqC7uxQ==
+playwright-core@=1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.0.2.tgz#fa56b61ac01892dfa903c69e27aa1e9fec055afd"
+  integrity sha512-JYTygH/jJ4/wpIy+owSMnEQb8BjbQptWqpED6smwEmccijL2B74KZg92V93rdmJxc4lNuS4iLR6SG3RQbBW2Aw==
   dependencies:
     debug "^4.1.1"
     extract-zip "^2.0.0"
@@ -6666,12 +6666,12 @@ playwright-core@=0.15.0:
     rimraf "^3.0.2"
     ws "^6.1.0"
 
-playwright@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-0.15.0.tgz#bf5c3bb8404975aba78459310742388c08438431"
-  integrity sha512-UGHkQz8DT43uJ0KgMh2rmj8BI4FE5ReQJ9nm5mG68tt1Cj2sXPdM2b05qptfYYBPtQRetQqtJTauZ6rlCDemaQ==
+playwright@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.0.2.tgz#0706486a4db99f9dfaf20503887e020a6d749c0b"
+  integrity sha512-92qvTeQ45Wex7wRwxqFZQm7lV8j7Z+Dxs7mNUS9wtlGS9mXswp1903XV1r7lKlvvaZ89uqV2BuZN+UUDpBaIAQ==
   dependencies:
-    playwright-core "=0.15.0"
+    playwright-core "=1.0.2"
 
 pngjs@^4.0.1:
   version "4.0.1"
@@ -8546,10 +8546,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ubook-alpha@^0.0.20:
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/ubook-alpha/-/ubook-alpha-0.0.20.tgz#c681124d65a3cbff72dfdd96bc0553b1faa90ab4"
-  integrity sha512-pOxizPZZvwjRijRkY1hpYLJa+LyMsGAs5PAFOC0qUwswRzK/1ehw8WncT5JYJ4Ok/BxhAm3lKIFxsYH4l2W0tw==
+ubook-alpha@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/ubook-alpha/-/ubook-alpha-0.0.21.tgz#29a72b52ab2cc5c10b2aaee5f439133b31b78628"
+  integrity sha512-EJaAWVpfBw2S7x9FbQg2w7a0aAE60DvRTW2Xsba6aiBySbdXTIeqHD8wnf9y1yVV54HgELwUVmKBrLILAykwwQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -8580,7 +8580,7 @@ ubook-alpha@^0.0.20:
     just-remove "^2.1.0"
     make-dir "^3.1.0"
     pixelmatch "^5.2.0"
-    playwright "^0.15.0"
+    playwright "^1.0.2"
     pngjs "^5.0.0"
     webpack-filter-warnings-plugin "^1.2.1"
 

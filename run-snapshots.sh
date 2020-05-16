@@ -9,7 +9,7 @@ exit_script () {
 
 echo "Downloading master snapshots from $S3_BUCKET_NAME S3 bucket"
 echo
-yarn ubook-s3 download artifacts
+yarn ubook-s3 download artifacts -b master
 if [ $? -eq 1 ]; then exit_script; fi
 
 echo
@@ -21,7 +21,7 @@ then
   if [ $? -eq 1 ]; then exit_script; fi
   echo
   echo "Updating master snapshots in $S3_BUCKET_NAME S3 bucket"
-  yarn ubook-s3 upload artifacts
+  yarn ubook-s3 upload artifacts -b master
 else
   yarn ubook-snapshot --host="http://ubook-server"
 fi
