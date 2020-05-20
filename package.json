@@ -6,7 +6,7 @@
   "scripts": {
     "ubook:build": "yarn ubook -o dist",
     "ubook:serve": "static-server dist --port 51372",
-    "ubook:snapshot:dev": "docker-compose run ubook-test bash -c 'yarn ubook-snapshot --host=\"http://ubook-server\"'"
+    "ubook:snapshot:dev": "docker-compose run ubook-test bash -c 'yarn ubook-snapshot -b chromium --host=\"http://ubook-server\"'"
   },
   "dependencies": {
     "baseui": "^9.70.0",
