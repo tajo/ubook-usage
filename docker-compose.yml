@@ -9,8 +9,8 @@ services:
   # running the snapshot tests in ci
   web-code-ubook-snapshot:
     build: .
-    security_opt:
-      - seccomp:chrome.json
+    links:
+      - "web-code-ubook-server"
     environment:
       - CI=true
       - NODE_ENV
