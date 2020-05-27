@@ -1,6 +1,6 @@
 steps:
   - name: ":storybook: ubook-snapshots"
-    command: ./run-snapshots.sh
+    command: ./ubook_snapshot.sh
     timeout_in_minutes: 30
     soft_fail:
       - exit_status: 1
@@ -8,7 +8,6 @@ steps:
       - "artifacts/**/*.png"
     plugins:
       "docker-compose#v3.0.3":
-        run: ubook-test
         volumes:
           - ${BUILDKITE_AGENT_BINARY_PATH:-/usr/bin/buildkite-agent}:/usr/bin/buildkite-agent
         environment:

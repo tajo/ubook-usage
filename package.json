@@ -6,7 +6,7 @@
   "scripts": {
     "ubook:build": "yarn ubook -o dist",
     "ubook:serve": "static-server dist --port 51372",
-    "ubook:snapshot:dev": "docker-compose run ubook-test bash -c 'yarn ubook-snapshot --host=\"http://ubook-server\"'"
+    "ubook:snapshot:dev": "docker-compose run web-code-ubook-snapshot bash -c 'yarn ubook-snapshot --host=\"http://web-code-ubook-server\"'"
   },
   "dependencies": {
     "baseui": "^9.70.0",
@@ -15,6 +15,6 @@
     "static-server": "^2.2.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7",
-    "ubook": "^0.0.18"
+    "ubook": "^0.0.20"
   }
 }
