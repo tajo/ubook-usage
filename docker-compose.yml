@@ -1,20 +1,9 @@
 version: "3.7"
 services:
-  # ubook this spins up a server that serves the html/js/css for the e2e tests
-  web-code-ubook-server:
-    command: "./ubook_server.sh"
-    ports:
-      - "51372:51372"
-    build: .
-  # running the snapshot tests in ci
   web-code-ubook-snapshot:
     build: .
-    links:
-      - "web-code-ubook-server"
     environment:
       - CI=true
       - NODE_ENV
     volumes:
       - "$PWD/artifacts:/ubook/artifacts"
-    depends_on:
-      - "web-code-ubook-server"
