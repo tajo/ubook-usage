@@ -32,7 +32,7 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libevent-2.1-6 \
   libgles2 \
   libvpx5 \
-  libjpeg8
+  libjpeg9
 
 RUN apt-get update && apt-get install -y libdbus-glib-1-2 \
   libxt6
