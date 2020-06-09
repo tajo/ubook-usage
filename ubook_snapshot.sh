@@ -1,6 +1,7 @@
 #!/bin/bash
 set -m
 
+
 echo "Building storybook instance and starting static-server"
 
 # build storybook
@@ -25,13 +26,13 @@ echo "Collecting stories and capturing snapshots"
 
 if [ "$BUILDKITE_BRANCH" = "master" ]
 then
-  yarn ubook-snapshot -u
+  yarn ubook-snapshot -b firefox -u
   if [ $? -eq 1 ]; then exit_script; fi
   echo
   echo "Updating master snapshots in $S3_BUCKET_NAME S3 bucket"
   yarn ubook-s3 upload artifacts -b master
 else
-  yarn ubook-snapshot
+  yarn ubook-snapshot -b firefox
 fi
 if [ $? -eq 1 ]; then exit_script; fi
 exit 0

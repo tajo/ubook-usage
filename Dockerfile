@@ -1,8 +1,9 @@
 FROM uber/web-base-image:10.16.0
 
-WORKDIR /ubook
+RUN apt-get install -y libdbus-glib-1-2 \
+  libxt6
 
-RUN lsb_release -a
+WORKDIR /ubook
 
 # Copy manifests and install dependencies.
 # Doing this before a build step can more effectively leverage Docker caching.
