@@ -4,8 +4,6 @@ RUN yarn global add yarn@1.19.1
 
 # Add our xvfb script
 RUN apt-get update && apt-get -y install jq libxi-dev libgl1-mesa-dev xvfb
-ADD xvfb /etc/init.d/xvfb
-RUN chmod a+x /etc/init.d/xvfb
 ENV DISPLAY :99
 
 # Install Chrome
