@@ -1,7 +1,6 @@
 #!/bin/bash
 set -m
 
-
 echo "Building storybook instance and starting static-server"
 
 # build storybook
