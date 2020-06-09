@@ -1,6 +1,6 @@
 FROM uber/web-base-image:10.16.0
 
-RUN apt-get install -y libdbus-glib-1-2 \
+RUN apt-get update && apt-get install -y libdbus-glib-1-2 \
   libxt6
 
 WORKDIR /ubook
