@@ -33,12 +33,10 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libgles2 \
   libvpx5
 
-RUN sh -c 'echo "deb https://deb.debian.org/debian/ wheezy main" >> /etc/apt/sources.list.d/wheezy.list'
-
-RUN apt-get update && apt-get -t wheezy install libjpeg8
-
-RUN apt-get update && apt-get install -y libdbus-glib-1-2 \
-  libxt6
+RUN apt-get update \
+  && sh -c 'echo "deb https://deb.debian.org/debian/ wheezy main" >> /etc/apt/sources.list.d/wheezy.list' \
+  && apt-get update \
+  && apt-get install -y libjpeg8
 
 WORKDIR /ubook
 
