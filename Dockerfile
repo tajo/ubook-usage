@@ -1,23 +1,12 @@
-FROM node:12.18.0-buster
+FROM ubuntu:bionic
 
-RUN yarn global add yarn@1.19.1
+# 1. Install node12
+RUN apt-get update && apt-get install -y curl && \
+  curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+  apt-get install -y nodejs
 
-# Add our xvfb script
-RUN apt-get update && apt-get -y install jq libxi-dev libgl1-mesa-dev xvfb
-ENV DISPLAY :99
-
-# Install Chrome
-RUN apt-get update && apt-get install -y wget --no-install-recommends \
-  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-  && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-  && apt-get update \
-  && apt-get install -y google-chrome-unstable \
-  --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /src/*.deb \
-  && npx node-gyp@4 install
-
-RUN apt-get update && apt-get install -y libwoff1 \
+# 2. Install WebKit dependencies
+RUN apt-get install -y libwoff1 \
   libopus0 \
   libwebp6 \
   libwebpdemux2 \
@@ -33,8 +22,23 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libgles2 \
   libvpx5
 
-RUN apt-get update \
-  && apt-get install -y libjpeg9
+# 3. Install Chromium dependencies
+RUN apt-get install -y libnss3 \
+  libxss1 \
+  libasound2
+
+# 4. Install Firefox dependencies
+
+RUN apt-get install -y libdbus-glib-1-2 \
+  libxt6
+
+# 5. Install ffmpeg to bring in audio and video codecs necessary for playing videos in Firefox.
+
+RUN apt-get install -y ffmpeg
+
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && apt update && apt-get install -y yarn
 
 WORKDIR /ubook
 
