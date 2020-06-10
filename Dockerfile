@@ -34,9 +34,7 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libvpx5
 
 RUN apt-get update \
-  && sh -c 'echo "deb https://deb.debian.org/debian/ jessie main" >> /etc/apt/sources.list.d/jessie.list' \
-  && apt-get update \
-  && apt-get install -y libjpeg-turbo
+  && apt-get install -y libjpeg9
 
 WORKDIR /ubook
 
