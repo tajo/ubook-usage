@@ -31,8 +31,9 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libxslt1.1 \
   libevent-2.1-6 \
   libgles2 \
-  libvpx5 \
-  libjpeg62-turbo
+  libvpx5
+
+RUN apt-get update && apt-get -t jessie install libjpeg8
 
 RUN apt-get update && apt-get install -y libdbus-glib-1-2 \
   libxt6
