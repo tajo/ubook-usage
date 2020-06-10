@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y libwoff1 \
   libgles2 \
   libvpx5
 
-RUN RUN sh -c 'echo "deb https://deb.debian.org/debian/ jessie main" >> /etc/apt/sources.list.d/jessie.list' \
+RUN sh -c 'echo "deb https://deb.debian.org/debian/ jessie main" >> /etc/apt/sources.list.d/jessie.list' \
   && apt-get update && apt-get -t jessie install libjpeg8
 
 RUN apt-get update && apt-get install -y libdbus-glib-1-2 \
