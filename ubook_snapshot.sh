@@ -26,13 +26,13 @@ echo "Collecting stories and capturing snapshots"
 
 if [ "$BUILDKITE_BRANCH" = "master" ]
 then
-  yarn ubook-snapshot  -b chromium,firefox -u
+  yarn ubook-snapshot -u
   if [ $? -eq 1 ]; then exit_script; fi
   echo
   echo "Updating master snapshots in $S3_BUCKET_NAME S3 bucket"
   yarn ubook-s3 upload artifacts -b master
 else
-  yarn ubook-snapshot -b chromium,firefox
+  yarn ubook-snapshot
 fi
 if [ $? -eq 1 ]; then exit_script; fi
 exit 0

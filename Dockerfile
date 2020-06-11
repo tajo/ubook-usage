@@ -19,6 +19,28 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 # Install Firefox dependencies
 RUN apt-get update && apt-get install -y libdbus-glib-1-2 libxt6 ffmpeg
 
+RUN apt-get install -y libwoff1 \
+  libopus0 \
+  libwebp6 \
+  libwebpdemux2 \
+  libenchant1c2a \
+  libgudev-1.0-0 \
+  libsecret-1-0 \
+  libhyphen0 \
+  libgdk-pixbuf2.0-0 \
+  libegl1 \
+  libnotify4 \
+  libxslt1.1 \
+  libevent-2.1-6 \
+  libgles2 \
+  libvpx5
+
+# Build libjpeg from source
+RUN cd /tmp && wget http://www.ijg.org/files/jpegsrc.v8d.tar.gz && tar zxvf jpegsrc.v8d.tar.gz && cd jpeg-8d && ./configure && make && make install
+
+# Add manually built libraries to the search path
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt update && apt-get install -y yarn
