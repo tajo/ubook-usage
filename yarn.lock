@@ -8628,10 +8628,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-ubook@^0.0.20:
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/ubook/-/ubook-0.0.20.tgz#4155d6c218ee355cc1974781eb75483a1b1d8807"
-  integrity sha512-P2/dha0Ci1Kr0coYwoeaLoVpxQAl/2yqSGLdfE5j7wbmuYFiRHjeYuKliG0cYvbd0c/h4yVQMmaoT/oqrzJ9Mw==
+ubook@^0.0.25:
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/ubook/-/ubook-0.0.25.tgz#f368f7fd89c9f9109e008de385be1a767e4775db"
+  integrity sha512-cC3weHe7kztL6VpluOkk+7TkEZUH05jXZSsZAjD/haqjgKBWHU+FC9kPPsXcsvKimfl17DE6NdesjOwEUI32JQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-class-properties" "^7.8.3"
@@ -8664,6 +8664,7 @@ ubook@^0.0.20:
     pixelmatch "^5.2.0"
     playwright "^1.0.2"
     pngjs "^5.0.0"
+    static-server "^2.2.1"
     webpack-filter-warnings-plugin "^1.2.1"
 
 unfetch@^4.1.0:
